@@ -1,0 +1,179 @@
+{
+  "id": "102019bba986c877897bf4c01f45a4891a0",
+  "version": "102019bba984a827efcba1e180f1cd79287",
+  "schema": {
+    "name": "demo_request",
+    "description": "Stores contact form submissions for demo requests from schools and districts, containing contact details and preferences",
+    "fields": [
+      {
+        "name": "id",
+        "description": "Unique identifier for the demo request",
+        "type": 1,
+        "compliance": {
+          "confidentiality": 1,
+          "reason": "System identifier"
+        }
+      },
+      {
+        "name": "data_creator",
+        "description": "id of the user who creates the record",
+        "type": 1,
+        "compliance": {
+          "confidentiality": 2,
+          "reason": "Audit trail"
+        }
+      },
+      {
+        "name": "data_updater",
+        "description": "id of the user who updates the record",
+        "type": 1,
+        "compliance": {
+          "confidentiality": 2,
+          "reason": "Audit trail"
+        }
+      },
+      {
+        "name": "create_time",
+        "description": "create time in timestamp unix",
+        "type": 1,
+        "compliance": {
+          "confidentiality": 1,
+          "reason": "Audit trail"
+        },
+        "format": "timestamp"
+      },
+      {
+        "name": "update_time",
+        "description": "update time in timestamp unix",
+        "type": 1,
+        "compliance": {
+          "confidentiality": 1,
+          "reason": "Audit trail"
+        },
+        "format": "timestamp"
+      },
+      {
+        "name": "school_name",
+        "description": "Name of the school or district requesting the demo",
+        "type": 1,
+        "compliance": {
+          "confidentiality": 2,
+          "reason": "Business operational data"
+        }
+      },
+      {
+        "name": "contact_person_name",
+        "description": "Full name of the contact person at the school",
+        "type": 1,
+        "compliance": {
+          "confidentiality": 3,
+          "reason": "Personally Identifiable Information (PII)"
+        }
+      },
+      {
+        "name": "contact_email",
+        "description": "Email address of the contact person",
+        "type": 1,
+        "compliance": {
+          "confidentiality": 3,
+          "reason": "Personally Identifiable Information (PII)"
+        },
+        "format": "email"
+      },
+      {
+        "name": "contact_phone",
+        "description": "Phone number of the contact person",
+        "type": 1,
+        "compliance": {
+          "confidentiality": 3,
+          "reason": "Personally Identifiable Information (PII)"
+        },
+        "nullable": true
+      },
+      {
+        "name": "student_count",
+        "description": "Estimated number of students in the school or district",
+        "type": 2,
+        "compliance": {
+          "confidentiality": 2,
+          "reason": "Business qualification metric"
+        },
+        "numeric": "int"
+      },
+      {
+        "name": "preferred_demo_time",
+        "description": "Preferred date and time for the demo in unix timestamp",
+        "type": 1,
+        "compliance": {
+          "confidentiality": 2,
+          "reason": "Scheduling information"
+        },
+        "nullable": true,
+        "format": "timestamp"
+      },
+      {
+        "name": "additional_notes",
+        "description": "Any additional context, questions, or notes provided by the requester",
+        "type": 1,
+        "compliance": {
+          "confidentiality": 2,
+          "reason": "Business context"
+        },
+        "nullable": true
+      }
+    ],
+    "indexes": [
+      {
+        "fields": [
+          "id"
+        ],
+        "unique": true,
+        "primary": true,
+        "order": false
+      },
+      {
+        "fields": [
+          "data_creator"
+        ],
+        "order": false
+      },
+      {
+        "fields": [
+          "data_updater"
+        ],
+        "order": false
+      },
+      {
+        "fields": [
+          "contact_email"
+        ],
+        "order": false
+      },
+      {
+        "fields": [
+          "school_name"
+        ],
+        "order": false
+      },
+      {
+        "fields": [
+          "create_time"
+        ],
+        "order": true
+      }
+    ]
+  },
+  "task": {
+    "id": "6967100a73f7f38197307ba3",
+    "root": "6967100a73f7f38197307ba3",
+    "project": "6967100a73f7f38197307ba2",
+    "user": "2851a320-b031-70ef-b586-c1e057f79c4f"
+  },
+  "namespace": {
+    "id": "01987547fc6c72ecb453bd2736bd4ea0",
+    "tenant": 2,
+    "name": "global-1",
+    "default": true
+  },
+  "revision": 1
+}
