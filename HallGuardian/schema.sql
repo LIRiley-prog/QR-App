@@ -38,6 +38,17 @@ CREATE TABLE IF NOT EXISTS students (
     FOREIGN KEY (school_id) REFERENCES schools(id) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  school_id INTEGER,            -- null for "global" admins
+  email TEXT NOT NULL UNIQUE,
+  password_hash TEXT NOT NULL,
+  role TEXT NOT NULL CHECK (role IN ('ADMIN','TEACHER')),
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (school_id) REFERENCES schools(id) ON DELETE SET NULL
+);
+
+
 -- SCAN EVENTS (QR or NFC)
 CREATE TABLE IF NOT EXISTS scan_events (
     id           INTEGER PRIMARY KEY AUTOINCREMENT,
